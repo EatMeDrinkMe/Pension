@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="locations">
-        <value>classpath:Config/Resources/JDBC</value>
+        <value>config/Resources/JDBC.txt</value>
     </property>
 </bean>
 
@@ -15,4 +15,8 @@
 	   <property name = "password"                      value = "${jdbc.pswd}"   />
 </bean>
 </beans>
+
+
+
+
 

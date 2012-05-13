@@ -22,7 +22,7 @@ public class Test {
 			e1.printStackTrace();
 		}
 		ApplicationContext context = 
-	    		new ClassPathXmlApplicationContext("Client.xml");
+	    		new ClassPathXmlApplicationContext("applicationContext.xml");
 		JFrame frame = (JFrame) context.getBean("window");
         frame .setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
   		frame .pack      ();

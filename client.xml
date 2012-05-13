@@ -168,6 +168,14 @@
 		<constructor-arg>
 	      <value>Пошук справи</value>
 	   </constructor-arg>
+	   	<property name = "service">
+		<ref bean = "pensionerManagerServiceTarget" />
+	</property>
 	</bean>
+	<bean id="pensionerManagerServiceTarget" class="pension.service.impl.PensionerManagerServiceImpl">
+      <property name="pensionerDao" ref="pensionerDao"/>
+</bean>
 </beans>
+
+
 

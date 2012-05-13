@@ -31,15 +31,15 @@ public class PensionerManagerServiceImpl
 	}
 
 	public Pensioner getPensionerByCaseNumber(int caseNumber) {
-		List<Pensioner> pl = pensionerDao.getAllPensioners();
-		Pensioner p = new Pensioner();
-		for(int i = 0;i<pl.size();i++){
-			if(pl.get(i).getCaseNumber()==caseNumber){
-				p = pl.get(i);break;
-			}
-		}
-		return p;
+//		List<Pensioner> pl = pensionerDao.getAllPensioners();
+//		Pensioner p = new Pensioner();
+//		for(int i = 0;i<pl.size();i++){
+//			if(pl.get(i).getCaseNumber()==caseNumber){
+//				p = pl.get(i);break;
+//			}
+//		}
+		return null;
 	}
-
+	
 	private PensionerDao pensionerDao;
 }

@@ -13,6 +13,28 @@
 </bean>
 
 <bean id="pensionerDao" class="pension.dao.PensionerDao">
+		<property name = "jdbcTemplate"
+                ref  = "jdbcTemplate"              />
+        <property name = "selectByIdStatment">
+       	          <value><![CDATA[
+			SELECT * FROM Pensioner WHERE idPensioner = ?
+			]]></value>
+		</property>
+        <property name = "selectByNameStatment">
+       	          <value><![CDATA[
+			SELECT * FROM Pensioner WHERE secondName = ?
+			]]></value>
+		</property>
+        <property name = "insertStatment">
+       	          <value><![CDATA[
+			INSERT INTO Pensioner(firstName, secondName, thirdName, birthday, INN, sex, expKoef, salKoef, adress, pensionType) values(?,?,?,?,?,?,?,?,?,?)
+			]]></value>
+		</property>
+        <property name = "updateStatment">
+       	          <value><![CDATA[
+			UPDATE Pensioner set firstName = ?, secondName = ?, thirdName = ?, birthday = ?, INN = ?, sex = ?, expKoef = ?, salKoef = ?, adress = ?, pensionType = ? where idPensioner = ?
+			]]></value>
+		</property>
 </bean>
 
                                       <!-- TARGETS -->
@@ -20,7 +42,7 @@
       <property name="pensionerDao" ref="pensionerDao"/>
 </bean>
 
-<bean id="coefficientManagerServiceTarget" class="pension.service.impl.CoefficientManagerServiceImpl">
+<!--  <bean id="coefficientManagerServiceTarget" class="pension.service.impl.CoefficientManagerServiceImpl">
 		<property name="coefficientDao" ref="coefficientDao"/>
 </bean>
 
@@ -29,9 +51,12 @@
 </bean>
 <bean id="experienceManagerServiceTarget" class="pension.service.impl.ExperienceManagerServiceImpl">
 		<property name="experienceDao" ref="experienceDao"/>
-</bean>
+</bean> -->
 	
 </beans>
+
+
+
 
 
 
