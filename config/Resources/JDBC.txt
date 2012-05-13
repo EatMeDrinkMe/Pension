@@ -1,0 +1,4 @@
+jdbc.drvr = com.sybase.jdbc3.jdbc.SybDriver
+jdbc.host = jdbc:sybase:Tds:127.0.0.1:5003/Pension
+jdbc.user = Dima
+jdbc.pswd = kotenok

@@ -1,0 +1,7 @@
+create table Coefficient (
+	idCoefficient                   bigint                           identity  ,
+	year                            int                              not null  ,
+	month                           varchar(12)                      not null  ,
+	coefficient                     float(8)                         not null   
+CONSTRAINT Coefficien_PK PRIMARY KEY CLUSTERED ( idCoefficient )
+)

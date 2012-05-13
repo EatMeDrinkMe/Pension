@@ -1,0 +1,8 @@
+май 13, 2012 11:31:47 AM org.springframework.context.support.AbstractApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@171f189: display name [org.springframework.context.support.ClassPathXmlApplicationContext@171f189]; startup date [Sun May 13 11:31:47 EEST 2012]; root of context hierarchy
+май 13, 2012 11:31:47 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFO: Loading XML bean definitions from class path resource [Client.xml]
+май 13, 2012 11:31:47 AM org.springframework.context.support.AbstractApplicationContext obtainFreshBeanFactory
+INFO: Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@171f189]: org.springframework.beans.factory.support.DefaultListableBeanFactory@f98ce0
+май 13, 2012 11:31:47 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@f98ce0: defining beans [window,scrollPane,separator,comboBox,toolbarButton,buttonSize,newCaseAction,searchAction]; root of factory hierarchy

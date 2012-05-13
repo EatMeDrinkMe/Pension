@@ -1,0 +1,1 @@
+java -classpath .;./bin;./lib/spring.jar;./lib/commons-logging.jar pension/test/Test
