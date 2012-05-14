@@ -1,8 +1,9 @@
 package pension.wrappers;
 
 import  java .util       .*;
-import  java.awt.Component ;
 import  java .awt  .event.*;
+
+import javax.swing.JComponent;
 import  javax.swing.event.*;
 
 public class TabbedPane
@@ -21,7 +22,7 @@ public class TabbedPane
 	}
 
 	public void switchToTab(){
-		Component      comp = children.get(getTitleAt(getSelectedIndex()));
+		JComponent      comp = children.get(getTitleAt(getSelectedIndex()));
 		if ( null!= comp ) {
 			comp.requestFocusInWindow     ();
 		}
@@ -37,11 +38,11 @@ public class TabbedPane
 	}
 
 	public void setChildren (
-		Map<String,Component> children
+		Map<String,JComponent> children
 	)
 	{
 		this.children = children;
 	}
 
-	protected Map<String,Component> children;
+	protected Map<String,JComponent> children;
 }

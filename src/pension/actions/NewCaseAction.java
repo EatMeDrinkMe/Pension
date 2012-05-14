@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
+import pension.dialogs.CaseDialog;
+
 public class NewCaseAction 
 	extends AbstractAction
 {
@@ -14,8 +16,19 @@ public class NewCaseAction
 		putValue(AbstractAction.NAME, name);
 	}
 	
-	public void actionPerformed(ActionEvent ae) {
-		System.out.println("NEW CASE!");
+	public void actionPerformed(
+		ActionEvent ae
+	)
+	{
+		dialog.setVisible(true);
+	}
+	
+	public void setDialog(
+		CaseDialog dialog
+	) 
+	{
+		this.dialog = dialog;
 	}
 
+	protected CaseDialog dialog;
 }

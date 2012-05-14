@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF8"?>
+<?xml version="1.0" encoding="cp1251"?>
 <beans xmlns      = "http://www.springframework.org/schema/beans"
        xmlns:xsi  = "http://www.w3.org/2001/XMLSchema-instance"
        xmlns:util = "http://www.springframework.org/schema/util"
@@ -31,23 +31,13 @@
 			</bean>
 			<bean parent = "toolbarButton" >
          	  	<constructor-arg>
-						<ref bean = "searchAction"    />
+						<ref bean = "searchByIdAction"    />
          	   </constructor-arg>
 			</bean>
 			<ref bean = "comboBox"/>
-		<!--	<bean parent = "toolbarButton" >
-         		<constructor-arg index = "0">
-						<ref bean = "addArchiveAction"    />
-         	   </constructor-arg>
-			</bean>        -->
-		<!--	<bean parent = "toolbarButton" >
-         		<constructor-arg index = "0">
-						<ref bean = "addEmployeeAction"    />
-         	   </constructor-arg>
-			</bean>              -->
 		</list>
 	</property>
-	<!--    <property name = "tabbedComponents" >
+	    <property name = "tabbedComponents" >
 			<list>
 				<bean parent = "scrollPane">
          		<constructor-arg index = "0" >
@@ -75,11 +65,42 @@
       			<value>480</value>
       	   </constructor-arg>
       	</bean>
-		</property>  -->
+		</property> 
 </bean>
                                      <!-- PANELS -->
+<bean id    = "casePanel"
+      class = "pension.panels.CasePanel"
+>
+    <constructor-arg index = "0" >
+		<list>
+			<ref bean = "newCaseAction"    />
+			<ref bean = "searchByIdAction"    />
+		</list>
+    </constructor-arg>
+</bean>
+									 
+										<!--TABLES-->
+	<bean id    = "pensionerTable"
+         	parent= "abstractTable"
+		>
+		<constructor-arg index = "0">
+			<ref bean = "employeeModel" />
+		</constructor-arg>
+		<constructor-arg index = "1">
+			<ref bean   = "employeeArchivesListColumnModel"            />
+		</constructor-arg>
+	</bean>
 
-
+	<bean id          = "abstractTable"
+         class       = "pension.wrappers.Table"
+         abstract    = "true"
+		>
+		<property name = "autoCreateRowSorter" value = "true" />
+		<property name = "selectionMode">
+			<util:constant static-field = "javax.swing.ListSelectionModel.SINGLE_SELECTION"    />
+		</property>
+	</bean>															
+										
                                       <!-- WRAPPERS -->
        	<bean id       = "scrollPane"
          class    = "javax.swing.JScrollPane"
@@ -110,17 +131,26 @@
   	    </constructor-arg>
 	    </bean>
 
-<!--  	<bean id    = "tabbedPane"
+  	<bean id    = "tabbedPane"
          class = "pension.wrappers.TabbedPane"
 		>
 		<property name  = "children">
 			<map>
-				<entry key  = "Архивы"      >
+				<entry key  = "Справа"      >
+				  <ref bean = "archivesAdminTable" />
+				</entry>
+				<entry key  = "Зарплата"      >
+				  <ref bean = "archivesAdminTable" />
+				</entry>
+				<entry key  = "Стаж"      >
+				  <ref bean = "archivesAdminTable" />
+				</entry>
+				<entry key  = "Пенсия"      >
 				  <ref bean = "archivesAdminTable" />
 				</entry>
 			</map>
 		</property>
-	</bean>  -->
+	</bean>  
 	
 	                    	<!--		BUTTONS		-->
 	<bean id    = "toolbarButton"
@@ -161,9 +191,12 @@
 		<constructor-arg>
 	      <value>Нова справа</value>
 	   </constructor-arg>
+	   	   	<property name = "dialog">
+		<ref bean = "newCaseDialog" />
+	</property>
 	</bean>
-	<bean id    = "searchAction"
-         class = "pension.actions.SearchAction"
+	<bean id    = "searchByIdAction"
+         class = "pension.actions.SearchById"
 		>
 		<constructor-arg>
 	      <value>Пошук справи</value>
@@ -175,7 +208,18 @@
 	<bean id="pensionerManagerServiceTarget" class="pension.service.impl.PensionerManagerServiceImpl">
       <property name="pensionerDao" ref="pensionerDao"/>
 </bean>
-</beans>
 
+                                    <!-- DIALOGS -->
+	<bean id    = "newCaseDialog"
+         class = "pension.dialogs.CaseDialog"
+		>
+	<!--  	<constructor-arg index = "0">
+			<ref bean = "environment" />
+		</constructor-arg>
+		<property name = "model" >
+			<ref   bean = "archivesAdminModel"/>
+		</property>    -->
+	</bean>
+</beans>
 
 

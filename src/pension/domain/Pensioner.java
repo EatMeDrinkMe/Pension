@@ -4,6 +4,8 @@ import java.util.*;
 
 public class Pensioner {
 	
+	public Pensioner(){}
+	
 	public Pensioner(
 			int id
 			, String firstName
@@ -223,7 +225,29 @@ public class Pensioner {
 		this.salKoef = salKoef;
 	}
 
-	protected int            id                        ;
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(
+		String adress
+	) 
+	{
+		this.adress = adress;
+	}
+
+	public int getPensionType() {
+		return pensionType;
+	}
+
+	public void setPensionType(
+		int pensionType
+	)
+	{
+		this.pensionType = pensionType;
+	}
+
+	protected int             id                        ;
 	protected String          firstName                 ;
 	protected String          secondName                ;
 	protected String          thirdName                 ;
