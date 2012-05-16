@@ -19,10 +19,10 @@ public class Window
 	)
 	{
 		super(tittle);
-		//add(mkTabbedPane(),BorderLayout.CENTER);
 	}
 	public void beforehand() {
 		add(mkToolbar   (),BorderLayout.NORTH );
+		add(mkTabbedPane(),BorderLayout.CENTER);
 		
 	}
 	

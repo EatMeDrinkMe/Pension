@@ -3,7 +3,7 @@ package pension.wrappers;
 import  java .util       .*;
 import  java .awt  .event.*;
 
-import javax.swing.JComponent;
+import   javax.swing.JComponent;
 import  javax.swing.event.*;
 
 public class TabbedPane

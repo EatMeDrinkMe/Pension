@@ -1,22 +1,22 @@
-май 14, 2012 11:42:34 PM org.springframework.context.support.AbstractApplicationContext prepareRefresh
-INFO: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1724a9d: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1724a9d]; startup date [Mon May 14 23:42:34 EEST 2012]; root of context hierarchy
-май 14, 2012 11:42:34 PM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+май 16, 2012 12:57:58 AM org.springframework.context.support.AbstractApplicationContext prepareRefresh
+INFO: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1724a9d: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1724a9d]; startup date [Wed May 16 00:57:58 EEST 2012]; root of context hierarchy
+май 16, 2012 12:57:58 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [applicationContext.xml]
-май 14, 2012 11:42:34 PM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+май 16, 2012 12:57:58 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [client.xml]
-май 14, 2012 11:42:34 PM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+май 16, 2012 12:57:58 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [config/Beans.xml]
-май 14, 2012 11:42:34 PM org.springframework.beans.factory.support.DefaultListableBeanFactory registerBeanDefinition
+май 16, 2012 12:57:58 AM org.springframework.beans.factory.support.DefaultListableBeanFactory registerBeanDefinition
 INFO: Overriding bean definition for bean 'pensionerManagerServiceTarget': replacing [Generic bean: class [pension.service.impl.PensionerManagerServiceImpl]; scope=singleton; abstract=false; lazyInit=false; autowireCandidate=true; autowireMode=0; dependencyCheck=0; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [client.xml]] with [Generic bean: class [pension.service.impl.PensionerManagerServiceImpl]; scope=singleton; abstract=false; lazyInit=false; autowireCandidate=true; autowireMode=0; dependencyCheck=0; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in class path resource [config/Beans.xml]]
-май 14, 2012 11:42:34 PM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+май 16, 2012 12:57:58 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [config/RowMapper.xml]
-май 14, 2012 11:42:34 PM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+май 16, 2012 12:57:58 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [config/DataSource.xml]
-май 14, 2012 11:42:34 PM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+май 16, 2012 12:57:58 AM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
 INFO: Loading XML bean definitions from class path resource [config/Connections.xml]
-май 14, 2012 11:42:34 PM org.springframework.context.support.AbstractApplicationContext obtainFreshBeanFactory
-INFO: Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@1724a9d]: org.springframework.beans.factory.support.DefaultListableBeanFactory@cb36fa
-май 14, 2012 11:42:34 PM org.springframework.core.io.support.PropertiesLoaderSupport loadProperties
+май 16, 2012 12:57:58 AM org.springframework.context.support.AbstractApplicationContext obtainFreshBeanFactory
+INFO: Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@1724a9d]: org.springframework.beans.factory.support.DefaultListableBeanFactory@611b5c
+май 16, 2012 12:57:58 AM org.springframework.core.io.support.PropertiesLoaderSupport loadProperties
 INFO: Loading properties file from class path resource [config/Resources/JDBC.txt]
-май 14, 2012 11:42:34 PM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
-INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@cb36fa: defining beans [window,scrollPane,separator,comboBox,toolbarButton,buttonSize,newCaseAction,searchByIdAction,pensionerManagerServiceTarget,newCaseDialog,coefficientDao,experienceDao,middleSalaryDao,pensionerDao,pensionerRowMapper,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,jdbcTemplate]; root of factory hierarchy
+май 16, 2012 12:57:58 AM org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@611b5c: defining beans [window,environment,casePanel,caseInfoPanel,searchPanel,pensionerTable,experienceTable,abstractTable,scrollPane,separator,comboBox,tabbedPane,toolbarButton,buttonSize,textField,newCaseAction,searchByNameAction,pensionerManagerServiceTarget,newCaseDialog,pensionerModel,experienceModel,pensionerListColumnModel,columnId,columnFirstName,columnSecondName,columnThirdName,columnBirthday,coefficientDao,experienceDao,middleSalaryDao,pensionerDao,pensionerRowMapper,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,jdbcTemplate]; root of factory hierarchy

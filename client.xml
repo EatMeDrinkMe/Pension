@@ -4,7 +4,8 @@
        xmlns:util = "http://www.springframework.org/schema/util"
        xsi:schemaLocation = "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd"
 >
-                                        <!-- VIEW -->
+
+<!--VIEW-->
 <bean id    = "window"
       class = "pension.view.Window"
       init-method = "beforehand"
@@ -15,7 +16,7 @@
 		<property name = "minimumSize"    >
       	<bean class = "java.awt.Dimension">
       		<constructor-arg index = "0">
-      			<value>640</value>
+      			<value>600</value>
       	   </constructor-arg>
       		<constructor-arg index = "1">
       			<value>480</value>
@@ -26,37 +27,27 @@
 		<list>
 			<bean parent = "toolbarButton" >
          	  	<constructor-arg>
-						<ref bean = "newCaseAction"    />
+				<ref bean = "newCaseAction"    />
          	   </constructor-arg>
 			</bean>
-			<bean parent = "toolbarButton" >
-         	  	<constructor-arg>
-						<ref bean = "searchByIdAction"    />
-         	   </constructor-arg>
-			</bean>
+			<ref bean = "searchPanel"/>				
 			<ref bean = "comboBox"/>
 		</list>
 	</property>
-	    <property name = "tabbedComponents" >
+	<property name = "tabbedComponents" >
 			<list>
 				<bean parent = "scrollPane">
          		<constructor-arg index = "0" >
-						<ref bean = "archivesAdminTable"  />
+			<ref bean = "casePanel"  />
          	   </constructor-arg>
-			<property name = "name" value = "Архивы"  />
-				</bean>
-				<bean parent = "scrollPane">
-         		<constructor-arg index = "0" >
-						<ref bean = "employeesArchivesTable"  />
-         	   </constructor-arg>
-					<property name = "name" value = "Архивариусы"  />
+			<property name = "name" value = "Справа"  />
 				</bean>
 			</list>
 	</property>
 	<property name = "tabbedPane"  >
 		<ref   bean = "tabbedPane" />
 	</property>
-	  	<property name = "preferredSize"  >
+	  	<!--<property name = "preferredSize"  >
       	<bean class = "java.awt.Dimension">
       		<constructor-arg index = "0">
       			<value>640</value>
@@ -65,29 +56,83 @@
       			<value>480</value>
       	   </constructor-arg>
       	</bean>
-		</property> 
+		</property> -->
+
 </bean>
-                                     <!-- PANELS -->
+
+<!--ENVIRONMENT-->
+<bean id    = "environment"
+      class = "pension.environment.Environment"
+>
+</bean>
+
+<!--PANELS-->
 <bean id    = "casePanel"
       class = "pension.panels.CasePanel"
 >
     <constructor-arg index = "0" >
 		<list>
-			<ref bean = "newCaseAction"    />
-			<ref bean = "searchByIdAction"    />
+			<ref bean = "pensionerTable"    />
+			<ref bean = "caseInfoPanel"     />
 		</list>
     </constructor-arg>
 </bean>
+
+<bean id    = "caseInfoPanel"
+      class = "pension.panels.CaseInfoPanel"
+>
+	<constructor-arg index = "0" >
+	    <map>
+		<entry key  = "№ Справи">
+			<ref bean = "textField"                  />
+		</entry>
+		<entry key  = "Имя">
+			<ref bean = "textField"                  />
+		</entry>
+		<entry key  = "Фамилия">
+			<ref bean = "textField"                  />
+		</entry>
+		<entry key  = "Отчество">
+			<ref bean = "textField"                  />
+		</entry>
+           </map>
+	</constructor-arg>
+</bean>
+
+<bean id          = "searchPanel"
+        class       = "pension.wrappers.SearchPanel"
+>		<constructor-arg index = "0">
+			<ref bean = "textField" />
+		</constructor-arg>
+		<constructor-arg index = "1">
+					<bean parent = "toolbarButton" >
+         	  	<constructor-arg>
+			<ref bean = "searchByNameAction"    />
+         	   </constructor-arg>
+		</bean>	
+		</constructor-arg>
+</bean>
 									 
-										<!--TABLES-->
+<!--TABLES-->
 	<bean id    = "pensionerTable"
          	parent= "abstractTable"
 		>
 		<constructor-arg index = "0">
-			<ref bean = "employeeModel" />
+			<ref bean = "pensionerModel" />
 		</constructor-arg>
 		<constructor-arg index = "1">
-			<ref bean   = "employeeArchivesListColumnModel"            />
+			<ref bean   = "pensionerListColumnModel"            />
+		</constructor-arg>
+	</bean>
+
+	<bean id    = "experienceTable"
+         	parent= "abstractTable"
+	>
+		<constructor-arg index = "0">
+			<ref bean = "pensionerModel" />
+		</constructor-arg>
+		<constructor-arg index = "1">
+			<ref bean   = "pensionerListColumnModel"            />
 		</constructor-arg>
 	</bean>
 
@@ -101,7 +146,7 @@
 		</property>
 	</bean>															
 										
-                                      <!-- WRAPPERS -->
+<!--WRAPPERS-->
        	<bean id       = "scrollPane"
          class    = "javax.swing.JScrollPane"
          abstract = "true"
@@ -137,9 +182,9 @@
 		<property name  = "children">
 			<map>
 				<entry key  = "Справа"      >
-				  <ref bean = "archivesAdminTable" />
+				  <ref bean = "casePanel" />
 				</entry>
-				<entry key  = "Зарплата"      >
+				<!--<entry key  = "Зарплата"      >
 				  <ref bean = "archivesAdminTable" />
 				</entry>
 				<entry key  = "Стаж"      >
@@ -147,12 +192,12 @@
 				</entry>
 				<entry key  = "Пенсия"      >
 				  <ref bean = "archivesAdminTable" />
-				</entry>
+				</entry>-->
 			</map>
 		</property>
 	</bean>  
 	
-	                    	<!--		BUTTONS		-->
+<!--BUTTONS-->
 	<bean id    = "toolbarButton"
          class = "javax.swing.JButton"
 		>
@@ -184,7 +229,11 @@
 	   </constructor-arg>
 	</bean>
 
-                             <!-- ACTIONS -->
+	<bean id = "textField"
+	class = "javax.swing.JTextField">
+      	</bean>
+
+<!--ACTIONS-->
 	<bean id    = "newCaseAction"
          class = "pension.actions.NewCaseAction"
 		>
@@ -195,21 +244,32 @@
 		<ref bean = "newCaseDialog" />
 	</property>
 	</bean>
-	<bean id    = "searchByIdAction"
-         class = "pension.actions.SearchById"
+	<bean id    = "searchByNameAction"
+         class = "pension.actions.SearchByName"
 		>
-		<constructor-arg>
-	      <value>Пошук справи</value>
+		<constructor-arg index = "0">
+	      <value>Пошук</value>
 	   </constructor-arg>
-	   	<property name = "service">
-		<ref bean = "pensionerManagerServiceTarget" />
+		<constructor-arg index = "1">
+	      <value>Справа</value>
+	   </constructor-arg>
+	   	<property name = "model">
+		<ref bean = "pensionerModel" />
+	</property>
+	   	<property name = "box">
+		<ref bean = "textField" />
+	</property>
+	   	<property name = "pane">
+		<ref bean = "tabbedPane" />
 	</property>
 	</bean>
+
+<!--SERVICES-->
 	<bean id="pensionerManagerServiceTarget" class="pension.service.impl.PensionerManagerServiceImpl">
       <property name="pensionerDao" ref="pensionerDao"/>
-</bean>
+	</bean>
 
-                                    <!-- DIALOGS -->
+<!--DIALOGS-->
 	<bean id    = "newCaseDialog"
          class = "pension.dialogs.CaseDialog"
 		>
@@ -219,6 +279,178 @@
 		<property name = "model" >
 			<ref   bean = "archivesAdminModel"/>
 		</property>    -->
+	</bean>
+	
+<!--MODELS-->
+		<bean id          = "pensionerModel"
+         class       = "pension.model.PensionerModel"
+         init-method = "refresh"
+	>
+		<property name = "service" >
+			<ref   bean = "pensionerManagerServiceTarget"/>
+		</property>
+		<property name = "environment" >
+			<ref   bean = "environment"/>
+		</property>
+	</bean>
+
+		<bean id          = "experienceModel"
+         class       = "pension.model.ExperienceModel"
+         init-method = "refresh"
+
+	>
+		<!--<property name = "service" >
+			<ref   bean = "pensionerManagerServiceTarget"/>
+		</property>
+		<property name = "environment" >
+			<ref   bean = "environment"/>
+		</property>-->
+	</bean>
+	
+<!--LIST COLUMN MODELS-->
+	<bean id          = "pensionerListColumnModel"
+         class       = "pension.wrappers.ColumnModel"
+         init-method = "beforehand"
+		>
+		<property name = "tableColumns">
+			<list>
+				<ref bean = "columnId"         />
+				<ref bean = "columnFirstName"  />
+				<ref bean = "columnSecondName" />
+				<ref bean = "columnThirdName"  />
+				<ref bean = "columnBirthday"   />
+			</list>
+		</property>
+	</bean>
+	
+<!--COLUMNS-->
+	<bean id    = "columnId"
+         class = "javax.swing.table.TableColumn"
+   	>
+		<constructor-arg index = "0">
+			<value>0</value>
+	   </constructor-arg>
+		<constructor-arg index = "1">
+			<value>75</value>
+	   </constructor-arg>
+		<constructor-arg index = "2">
+			<bean class = "pension.wrappers.IdCellRenderer" />
+	   </constructor-arg>
+		<constructor-arg index = "3">
+			<null/>
+	   </constructor-arg>
+		<property name = "minWidth"   >
+			<value>75</value>
+		</property>
+		<property name = "maxWidth"   >
+			<value>75</value>
+		</property>
+		<property name = "headerValue">
+			<value>№ Справы</value>
+		</property>
+	</bean>
+	
+		<bean id    = "columnFirstName"
+         class = "javax.swing.table.TableColumn"
+   	>
+		<constructor-arg index = "0">
+			<value>1</value>
+	   </constructor-arg>
+		<constructor-arg index = "1">
+			<value>75</value>
+	   </constructor-arg>
+		<constructor-arg index = "2">
+			<bean class = "pension.wrappers.IdCellRenderer" />
+	   </constructor-arg>
+		<constructor-arg index = "3">
+			<null/>
+	   </constructor-arg>
+		<property name = "minWidth"   >
+			<value>75</value>
+		</property>
+		<property name = "maxWidth"   >
+			<value>75</value>
+		</property>
+		<property name = "headerValue">
+			<value>Имя</value>
+		</property>
+	</bean>
+	
+		<bean id    = "columnSecondName"
+         class = "javax.swing.table.TableColumn"
+   	>
+		<constructor-arg index = "0">
+			<value>2</value>
+	   </constructor-arg>
+		<constructor-arg index = "1">
+			<value>75</value>
+	   </constructor-arg>
+		<constructor-arg index = "2">
+			<bean class = "pension.wrappers.IdCellRenderer" />
+	   </constructor-arg>
+		<constructor-arg index = "3">
+			<null/>
+	   </constructor-arg>
+		<property name = "minWidth"   >
+			<value>75</value>
+		</property>
+		<property name = "maxWidth"   >
+			<value>75</value>
+		</property>
+		<property name = "headerValue">
+			<value>Фамилия</value>
+		</property>
+	</bean>
+		<bean id    = "columnThirdName"
+         class = "javax.swing.table.TableColumn"
+   	>
+		<constructor-arg index = "0">
+			<value>3</value>
+	   </constructor-arg>
+		<constructor-arg index = "1">
+			<value>75</value>
+	   </constructor-arg>
+		<constructor-arg index = "2">
+			<bean class = "pension.wrappers.IdCellRenderer" />
+	   </constructor-arg>
+		<constructor-arg index = "3">
+			<null/>
+	   </constructor-arg>
+		<property name = "minWidth"   >
+			<value>75</value>
+		</property>
+		<property name = "maxWidth"   >
+			<value>75</value>
+		</property>
+		<property name = "headerValue">
+			<value>Отчество</value>
+		</property>
+	</bean>
+	
+		<bean id    = "columnBirthday"
+         class = "javax.swing.table.TableColumn"
+   	>
+		<constructor-arg index = "0">
+			<value>4</value>
+	   </constructor-arg>
+		<constructor-arg index = "1">
+			<value>75</value>
+	   </constructor-arg>
+		<constructor-arg index = "2">
+			<bean class = "pension.wrappers.IdCellRenderer" />
+	   </constructor-arg>
+		<constructor-arg index = "3">
+			<null/>
+	   </constructor-arg>
+		<property name = "minWidth"   >
+			<value>75</value>
+		</property>
+		<property name = "maxWidth"   >
+			<value>75</value>
+		</property>
+		<property name = "headerValue">
+			<value>Дата</value>
+		</property>
 	</bean>
 </beans>
 

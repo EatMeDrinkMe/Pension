@@ -59,12 +59,15 @@ public class PensionerDao
 			String name
 	)
 	{
-		return jdbcTemplate.query
-		(selectByNameStatment
-		,new Object[]{
-			name
-		}
-		, pensionerRowMapper);
+		return (List<Pensioner>) jdbcTemplate.query(
+				selectByNameStatment
+				, new Object[]{
+						name
+				}
+				, new int   []{
+					java.sql.Types.VARCHAR
+				}
+				, pensionerRowMapper);
 	}
 	
 	public void setJdbcTemplate(

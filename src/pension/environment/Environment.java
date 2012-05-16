@@ -13,5 +13,17 @@ public class Environment {
 		this.pensionType = pensionType;
 	}
 
-	protected int pensionType;
+	public void setSearchPensionerName(
+		String searchPensionerName
+	) 
+	{
+		this.searchPensionerName = searchPensionerName;
+	}
+
+	public String getSearchPensionerName() {
+		return searchPensionerName;
+	}
+
+	protected String searchPensionerName;
+	protected int    pensionType;
 }
